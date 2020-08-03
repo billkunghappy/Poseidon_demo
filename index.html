@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<meta charset="UTF-8" />
+<html>
+<head>
+	<title>Poseidon Network</title>
+    <link rel="stylesheet" type="text/css" href="css/navbar_style.css">
+    <link rel="stylesheet" type="text/css" href="css/main_style.css">
+    <script type="text/javascript" src="js/data_init.js"> </script>
+    <!-------------------------- JQuery -------------------------->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-------------------------- Frappe Charts API -------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js"></script>
+    <!-------------------------- AM Charts API -------------------------->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    
+</head>
+<body>
+    <!-------------------------- Navbar -------------------------->
+	<div class = "navbar">
+		<img src="img/poseidonnetwork.png"
+     		srcset="img/poseidonnetwork@2x.png 2x,
+             		img/poseidonnetwork@3x.png 3x"
+     	class="navbar-logo">
+     	<div class = "navbar-links">
+     		<a href="#">HOME</a>
+     	</div>
+	</div>
+    <!-------------------------- left-container -------------------------->
+    <div class="left-container">
+        <div class="data-block small-block" >
+            <div class="block-title">
+                <p class="text-title title-left">TOTAL QQQ</p>
+                <div class="title-right">
+                    <a href="#">
+                        <img class="img-title" src="img/QQQ.png"></img>
+                    </a>    
+                </div>
+            </div>
+            <div class="block-content"> 
+                <p class="text-content text-big">50,030</p><span class="space-span"></span>
+                <p class="text-content text-small">/DAY</p>
+            </div>
+        </div>
+        <div class="data-block small-block" >
+            <div class="block-title">
+                <p class="text-title title-left">TOTAL QAS</p>
+                <div class="title-right">
+                    <a href="#">
+                        <img class="img-title" src="img/QAS_S.png"></img>
+                    </a>
+                </div>
+            </div>
+            <div class="block-content"> 
+                <p class="text-content text-big">5,000</p><span class="space-span"></span>
+                <p class="text-content text-small">/6,000</p>
+            </div>
+        </div>
+        <div class="data-block small-block" >
+            <div class="block-title">
+                <p class="text-title title-left">STAKING VALUE</p>
+                <p class="text-title title-right">STAKING</p>
+            </div>
+            <div class="block-content"> 
+                <p class="text-content text-big">600</p><span class="space-span"></span>
+                <p class="text-content text-small">QQQ</p>
+                <span class="space-span"></span>
+                <p class="text-content text-big">15%</p><span class="space-span"></span>
+                <p class="text-content text-small">Per QQQ</p>
+                <span class="text-content" style="font-size: 14px;color: #90cfbe; ">(+18.3%)</span>
+            </div>
+        </div>
+        <div class="data-block" style="height: 610px;width: 100%;">
+            <div class="block-title">
+                <p class="text-title title-left">LAST REQUEST</p>
+                <a href="#" class="text-subtitle title-right">ALL</a>
+            </div>
+            <div class="block-title">
+                <p class="text-subtitle title-left">IP</p>
+                <p class="text-subtitle title-right">REQUESTED</p>
+            </div>
+            <ul id="request-ip-list">
+                <li id="request-ip-list-item-demo" class="request-ip-list-item" style="display: none;">
+                    <p class="left">256.110.2.3</p>
+                    <div class="right">
+                        <p class="time">3 sec</p>
+                        <p class="ago">ago</p>
+                    </div>
+                </li>
+                <!-- 用js 生成list -->
+                <script type="text/javascript">
+                    // 三種顏色
+                    var dot_color={"green":"#00ff00","yellow":"#ffff00","red":"#ff0000"};
+                    // req_list 定義在 data_init.js
+                    req_list.forEach(function(ip_time_color) {
+                        var newDiv = $("#request-ip-list-item-demo").clone();
+                        newDiv.appendTo("#request-ip-list");
+                        newDiv.find('.left').html(ip_time_color[0]);
+                        newDiv.find('.time').html(ip_time_color[1]);
+                        // color
+                        newDiv.find('.left').attr('style', "--dot-color:"+dot_color[ip_time_color[2]]);
+                        newDiv.show();
+                    });
+                    
+                </script>
+                
+            </ul>
+        </div>
+    </div>
+    <!-------------------------- right-container -------------------------->
+    <div class="right-container">
+        <div class="data-block big-block" >
+            <div class="block-title">
+                <p class="title-left text-title">TOTAL NODES</p>
+            </div>
+            
+            <div class="block-content"> 
+                <p class="text-content text-big" id="total_node_text">91,939,413</p><span class="space-span"></span>
+                <p class="text-content text-small">NODES</p>
+            </div>
+            <div class="chart" id="chart-total-nodes"></div>
+        </div>
+        <div class="data-block med-block" style="float: left;">
+            <div class="block-title">
+                <p class="title-left text-title">LAST TIME</p>
+            </div>
+            
+            <div class="block-content"> 
+                <p class="text-content text-big">2</p><span class="space-span"></span>
+                <p class="text-content text-small">min</p><span class="space-span"></span>
+                <p class="text-content text-big">31</p><span class="space-span"></span>
+                <p class="text-content text-small">sec ago</p>
+            </div>
+            <div class="chart" id="chart-last-time"></div>
+        </div>
+        <div class="data-block med-block" style="float: right;">
+            <div class="block-title">
+                <p class="title-left text-title">AVG TIME / REQUEST</p>
+            </div>
+            
+            <div class="block-content"> 
+                <p class="text-content text-big">1</p><span class="space-span"></span>
+                <p class="text-content text-small">min</p><span class="space-span"></span>
+                <p class="text-content text-big">10</p><span class="space-span"></span>
+                <p class="text-content text-small">sec ago</p>
+            </div>
+            <div class="chart" id="chart-avg-time"></div>
+        </div>
+        <div class="data-block big-block" id="gmap">
+            <div class="block-title" >
+                <div style="width: 100px;height: 100px;" ></div>
+                <p class="title-left text-title">Location</p>
+            </div>
+        </div>
+    </div>
+    <!-------------------------- bottom-container -------------------------->
+    <div class="bottom-container">
+        <div class="left" >
+            <div class="data-block" style="height: 200px; width: 48%; float: left;">
+                <div class="block-title">
+                    <p class="title-left text-title" >STORAGE</p>
+                </div>
+                <div class="chart" id="chart-storage" style="margin-left: -10px;"></div>
+            </div>
+            <div class="data-block" style="height: 200px; width: 48%; float: right;">
+                <div class="block-title">
+                    <p class="title-left text-title">BANDWIDTH</p>
+                </div>
+                <div class="chart" id="chart-bandwidth" style="margin-left: -10px;"></div>
+            </div>
+        </div>
+        <div class="right data-block" >
+            <div style="height: 200px; width: 48%; float: left;">
+                <div class="block-title">
+                    <p class="title-left text-title">COMPUTING</p>
+                </div>
+                <div class="chart" id="chart-computing" style="margin-left: -30px;"></div>
+            </div>
+            <div style="height: 200px; width: 48%; float: right;">
+                <div class="block-title">
+                    <p class="title-left text-title" style="width: 100%">DOCKER AMOUNT</p>
+
+                </div>
+                <div id="docker-amount-item">
+                    <p class="left">Pokaldot</p>
+                    <p class="right">1,500</p>
+                </div>
+                <hr>
+                <div id="docker-amount-item">
+                    <p class="left">QVPN</p>
+                    <p class="right">1,600</p>
+                </div>
+                <hr>
+                <div id="docker-amount-item">
+                    <p class="left">QCDN</p>
+                    <p class="right">125</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-------------------------- node-list-table-container -------------------------->
+    <div class="node-list-table-container" >
+        <div class="block-title">
+            <p class="text-title title-left">NODE LIST</p>
+        </div>
+        <table class="node-list-table">
+            <thead>
+                 <tr>
+                    <td class="text-subtitle col-big">Edge Name</td>
+                    <td class="text-subtitle col-big">Node Type</td>
+                    <td class="text-subtitle col-small">Is Mining</td>
+                    <td class="text-subtitle col-small">Last Time</td>
+                    <td class="text-subtitle col-small">CPU</td>
+                    <td class="text-subtitle col-small">RAM</td>
+                    <td class="text-subtitle col-small">Up Time</td>
+                </tr>
+            </thead>
+            <tbody style=" border-collapse: collapse !important;" id="node-list">
+                <tr class="data-block" id="node-list-item-demo" style="display: none;">
+                    <td class="text-content col-big">
+                        <strong>• </strong> <span class="node-list-edge_name">53420-8336 Tokyo</span>
+                    </td>
+                    <td class="text-content col-big node-list-node_type">QEdge - 1.0 / ARM-x86</td>
+                    <td class="text-content col-small">
+                        <span class="node-list-is_mining">357</span><span style="opacity: 0.6;">tb</span>
+                    </td>
+                    <td class="text-content col-small">
+                        <span class="node-list-last_time">2 sec </span><span style="opacity: 0.6;">ago</span>
+                    </td>
+                    <td class="text-content col-small node-list-cpu" >
+                        ARMv8.2-A 
+                    </td>
+                    <td class="text-content col-small">
+                        <span class="node-list-ram">2 </span><span style="opacity: 0.6;">GB</span>
+                    </td>
+                    <td class="text-content col-small node-list-up_time">
+                        100%
+                    </td>
+                </tr>
+                <script type="text/javascript">
+                    // node_list 定義在 data_init.js
+                    node_list.forEach(function(node_item) {
+                        var newDiv = $("#node-list-item-demo").clone();
+                        newDiv.appendTo("#node-list");
+                        newDiv.find('.node-list-edge_name').html(node_item["edge_name"]);
+                        newDiv.find('.node-list-node_type').html(node_item["node_type"]);
+                        newDiv.find('.node-list-is_mining').html(node_item["is_mining"]);
+                        newDiv.find('.node-list-last_time').html(node_item["last_time"]);
+                        newDiv.find('.node-list-cpu').html(node_item["cpu"]);
+                        newDiv.find('.node-list-ram').html(node_item["ram"]);
+                        newDiv.find('.node-list-up_time').html(node_item["up_time"]);
+                        newDiv.show();
+                    });
+                    
+                </script>
+            </tbody>
+        </table>
+
+    </div>
+    <br><br>
+    <script type="text/javascript" src="js/charts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU9NnvckPaCRFbyWNGbTBi2F1Tb-wPGWU"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/charts.css">    
+    
+</body>
+
+</html>

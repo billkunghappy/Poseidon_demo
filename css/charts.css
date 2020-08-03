@@ -1,0 +1,92 @@
+@font-face {
+  font-family: Montserrat;
+  src: url(../fonts/montserrat/Montserrat-Medium.otf);
+}
+
+/* ----------------------------- Frappe Chart設定 ----------------------------- */
+.chart{
+	height: calc(100% - 115px);
+	margin: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-family: Montserrat !important;
+}
+/*.frappe-chart .chart-legend {
+    display: none;
+}*/
+
+/* ----------------------------- Frappe Chart 不顯示Label，axis設定 ----------------------------- */
+/* x axis */
+#chart-storage .frappe-chart .x.axis .line-vertical,
+#chart-storage .frappe-chart .x.axis text {
+    display: none;
+}
+
+/* y axis */
+#chart-storage .frappe-chart .y.axis .line-horizontal,
+#chart-storage .frappe-chart .y.axis text {
+    display: none;
+}
+
+/* x axis */
+#chart-bandwidth .frappe-chart .x.axis .line-vertical,
+#chart-bandwidth .frappe-chart .x.axis text {
+    display: none;
+}
+
+/* y axis */
+#chart-bandwidth .frappe-chart .y.axis .line-horizontal,
+#chart-bandwidth .frappe-chart .y.axis text {
+    display: none;
+}
+
+/* x axis */
+#chart-computing .frappe-chart .x.axis .line-vertical,
+#chart-computing .frappe-chart .x.axis text {
+    display: none;
+}
+
+/* y axis */
+#chart-computing .frappe-chart .y.axis .line-horizontal,
+#chart-computing .frappe-chart .y.axis text {
+    display: none;
+}
+
+
+/* ----------------------------- Frappe Chart tooltip設定 ----------------------------- */
+
+g[role=tooltip]{
+	background-color: #1d202b;	
+	text-align: center !important;
+	box-shadow: 0 4px 4px 0 rgba(17, 19, 26, 0.32);
+}
+.graph-svg-tip {
+	background-color: #1d202b;	
+	text-align: center !important;
+	box-shadow: 0 4px 4px 0 rgba(17, 19, 26, 0.32);
+}
+.graph-svg-tip .ago{
+	font-size: 10px;
+	color: gray;
+	/*讓字變暗*/
+	opacity: 0.6;
+}
+
+/* ----------------------------- Am chart設定 ----------------------------- */
+.line-hotizontal{
+	opacity: 0.5;
+}
+.amchart-tooltip-text{
+	font-size: 14px;
+	color: #ffffff;
+	font-family: Montserrat;
+}
+.amchart-tooltip-subtext{
+	font-size: 10px;
+	color: #d7f2ee;
+	font-family: Montserrat;
+}
+/*隱藏 amchart free license button*/
+g[aria-labelledby="id-66-title"] {
+	display: none;
+}
